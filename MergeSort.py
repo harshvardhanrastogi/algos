@@ -1,36 +1,43 @@
 import math
 
+class MergeSort:
 
-def mergeSort(arr, p: int, r: int):
-    if p < r:
-        q = math.floor((p + r) / 2)
-        mergeSort(arr, p, q)
-        mergeSort(arr, q + 1, r)
-        merge(arr, p, q, r)
-
-def merge(arr, p: int, q: int, r: int):
-    n1 = q - p + 1
-    n2 = r - q
-    left = [None]*(n1 + 1)
-    right = [None]*(n2 + 1)
+    def __init__(self):
+        pass
     
-    for i in range(n1):
-        left[i] = arr[p + i]
-    for j in range(n2):
-        right[j] = arr[q + j + 1];
-    left[n1] = math.inf
-    right[n2] = math.inf
-    i = 0
-    j = 0
-    for k in range(p, r + 1):
-        if left[i] <= right[j]:
-            arr[k] = left[i]
-            i = i + 1
-        else:
-            arr[k] = right[j]
-            j = j + 1
+    def mergeSort(self, arr, p: int, r: int):
+        if p < r:
+            q = math.floor((p + r) / 2)
+            self.mergeSort(arr, p, q)
+            self.mergeSort(arr, q + 1, r)
+            self.merge(arr, p, q, r)
+
+    def merge(self, arr, p: int, q: int, r: int):
+        n1 = q - p + 1
+        n2 = r - q
+        left = [None]*(n1 + 1)
+        right = [None]*(n2 + 1)
+
+        for i in range(n1):
+            left[i] = arr[p + i]
+        for j in range(n2):
+            right[j] = arr[q + j + 1];
+        left[n1] = math.inf
+        right[n2] = math.inf
+        i = 0
+        j = 0
+        for k in range(p, r + 1):
+            if left[i] <= right[j]:
+                arr[k] = left[i]
+                i = i + 1
+            else:
+                arr[k] = right[j]
+                j = j + 1
+
+
 # 500 randomly generated numbers. Generate yours [here] .
 # [here]: https://www.random.org/integer-sets/
+"""
 arr = [5403, 8542, 3383, 9869, 1492, -2194, 3514, -3662, -4480, 3437, 267, -7982, -4290, 7757, -9229,
        -2513, -6084, -470, 2946, 9276, -9445, -820, -7409, -9152, 7926, 7722, 2916, -3542, 6843, 1495,
        9622, -364, 4907, -8995, 1282, 8638, -49, -1586, 3427, 7402, 9085, -8644, -54, -5333, 1326, -1570,
@@ -60,6 +67,8 @@ arr = [5403, 8542, 3383, 9869, 1492, -2194, 3514, -3662, -4480, 3437, 267, -7982
        3331, 2365, 9574, 2804, -801, 4482, -8307, -9312, 6107, -4142, 6892, -441, 6023, -5253, 1372, -2672, 7576, 4071, 9569, -2644,
        -4010, 8160, 6399, 5843, -7622, -1521, 6246, 8143, -7149, 9344, -3333, 6881, 6698, 8091, 8567, 5016, 7498, -2201, 7662, 2338, -5028,
        math.inf]
-mergeSort(arr, int(0), len(arr) - 1)
+ms = MergeSort()
+ms.mergeSort(arr, int(0), len(arr) - 1)
 for i in range(len(arr) - 1):
     print(arr[i])
+"""
