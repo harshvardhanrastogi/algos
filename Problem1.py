@@ -39,3 +39,5 @@ for i in range(len(arr) - 1):
         print("index: ", index, "value: ", arr[index])
         break
 
+# Faster solution would be add values to the hashmap and find for a value if x-value is there in the map
+# This is omega(n) solution.
